@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './App.css'
 
-function Option({value, setValue, setClick}){
+function Option({value, setChoice, setClick}){
 
   function handleClick(){
-    setValue(value);
-    setClick("true");
+    setChoice(current => ({...current, user: value}));
+    setClick(true);
     console.log("value is set to ",value);
   }
 
@@ -14,66 +14,77 @@ function Option({value, setValue, setClick}){
   )
 }
 
-function Options({userChoice, setChoice, setClick}) {
+function Options({setChoice, setClick, options}) {
   return (
     <div className='options'>
-      <Option value="Rock" setValue={setChoice} setClick={setClick}/>
-      <Option value="Paper" setValue={setChoice} setClick={setClick}/>
-      <Option value="Scissor" setValue={setChoice} setClick={setClick}/>
+      <Option value={options[0]} setChoice={setChoice} setClick={setClick}/>
+      <Option value={options[1]} setChoice={setChoice} setClick={setClick}/>
+      <Option value={options[2]} setChoice={setChoice} setClick={setClick}/>
     </div>
   )
 }
 
-function Scoreboard({userScore, compScore}){
+function Scoreboard({score}){
   return (
     <div className='scoreboard'>
-      <h3 className='score'>Your Score: {userScore}</h3>
-      <h3 className='score'>Opponet Score: {compScore}</h3>
+      <h3 className='score'>Your Score: {score.user}</h3>
+      <h3 className='score'>Opponet Score: {score.comp}</h3>
     </div>
   )
 }
 
-function Fight({userChoice, userScore, compScore, setUser, setComp, setStatus, compChoice, setCompChoice, click, setClick}) {
-  const choices = ["Rock", "Paper", "Scissor"];
-  const randomNumber = Math.floor(Math.random()*3);
+function Fight({choice, setChoice, score, setScore, setStatus, click, setClick, options}) {
+  let randomNumber;
+  let compChoice;
   const [fight, useFight] = useState("Start Fight");
-  setCompChoice(choices[randomNumber]);
 
   function handleFight(){
+    randomNumber = Math.floor(Math.random()*3);
+    compChoice = options[randomNumber];
+    // setChoice(current => ({...current, comp: choices[randomNumber]}));
+    console.log("comp has pick an option");
     if(click == "false") {
+      console.log("user has not pick an option");
       setStatus("Pick a move first before start a fight");
     } else {
-      if(userScore < 10 && compScore < 10) {
-        if(userChoice == compChoice) {
+      console.log("user has picked an option");
+      if(score.user < 10 && score.comp < 10) {
+        console.log("neither user or comp has 10 wins");
+        if(choice.user == compChoice) {
           console.log("seri");
           setStatus("Draw!");
-        } else if((userChoice == "Rock" && compChoice == "Scissor")||(userChoice == "Paper" && compChoice == "Rock")||(userChoice == "Scissor" && compChoice == "Paper")) {
+          setClick(false);
+        } else if((choice.user == options[0] && compChoice == options[2])||(choice.user == options[1] && compChoice == options[0])||(choice.user == options[2] && compChoice == options[1])) {
           console.log("user +1");
-          if(userScore + 1 == 10) {
+          if(score.user + 1 == 10) {
+            console.log("user won");
             setStatus("Congrats you win!");
             useFight("Try Again");
           } else {
             setStatus("Win!");
-            setClick("false");
           }
-          setUser(userScore + 1);
+          setClick(false);
+          setScore(current => ({...current, user: current.user + 1}));
         } else {
           console.log("comp +1");
-          if(compScore + 1 == 10) {
+          if(score.comp + 1 == 10) {
+            console.log("comp won");
             setStatus("Sorry you lose :(");
             useFight("Try Again");
           } else {
             setStatus("Lose!");
-            setClick("false");
           }
-          setComp(compScore + 1);
+          setClick(false);
+          setScore(current => ({...current, comp: current.comp + 1}));
         }
+        setChoice(current => ({...current, comp: compChoice}));
       } else {
+        console.log("game restart");
         setStatus("");
-        setUser(0);
-        setComp(0);
+        setScore({user: 0, comp: 0});
+        setChoice({user: null, comp: null});
         useFight("Start Fight");
-        setClick("false");
+        setClick(false);
       }
     }
   }    
@@ -86,22 +97,17 @@ function Fight({userChoice, userScore, compScore, setUser, setComp, setStatus, c
 }
 
 export default function Game() {
-  const [userScore, setUserScore] = useState(0)
-  const [compScore, setCompScore] = useState(0)
-  const [userChoice, setUserChoice] = useState(null)
-  const [compChoice, setCompChoice] = useState(null)
+  const [choice, setChoice] = useState({ user: null, comp: null})
+  const [score, setScore] = useState({ user: 0, comp: 0})
   const [status, setStatus] = useState(null)
-  const [click, setClick] = useState("false")
+  const [click, setClick] = useState(false)
+  const options = ["Rock", "Paper", "Scissor"]
 
   function Choice() {
-    if(userChoice!=null){
-      return (
-        <p>You picked {userChoice}</p>
-      )
+    if(click){
+      return <p>You pick {choice.user}</p>;      
     } else {
-      return (
-        null
-      )
+      return null;
     }
   }
 
@@ -109,12 +115,12 @@ export default function Game() {
     <>
       <h1>Rock Paper Scissor</h1>
       <p>Choose one of the moves to defeat your enemy. The first one to reach 10 scores wins.</p>
-      <Scoreboard userScore={userScore} compScore={compScore}/>
+      <Scoreboard score={score}/>
 
       <p className='status'>{status}</p>
       <Choice/>
-      <Options userChoice={userChoice} setChoice={setUserChoice} setClick={setClick}/>
-      <Fight userChoice={userChoice} userScore={userScore} compScore={compScore} setUser={setUserScore} setComp={setCompScore} setStatus={setStatus} compChoice={compChoice} setCompChoice={setCompChoice} click={click} setClick={setClick}/>
+      <Options setChoice={setChoice} setClick={setClick} options={options}/>
+      <Fight choice={choice} setChoice={setChoice} score={score} setScore={setScore} setStatus={setStatus}  click={click} setClick={setClick} options={options}/>
     </>
   )
 }

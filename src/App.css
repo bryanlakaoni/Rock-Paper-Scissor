@@ -47,13 +47,20 @@
   border: 1rem;
 }
 
+.scoreboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .score {
   padding: 1rem;
   margin: 1rem;
-  border: 1rem;
-  background-color: aqua;
+  width: fit-content;
 }
 
 .status {
-  background-color: blueviolet;
+  width: fit-content;
+  justify-self: center;
+  color: aqua;
 }
