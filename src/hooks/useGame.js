@@ -7,7 +7,7 @@ const round = 10;
 export function useGame() {
     const [choice, setChoice] = useState({ user: null, comp: null})
     const [score, setScore] = useState({ user: 0, comp: 0})
-    const [status, setStatus] = useState(null)
+    const [status, setStatus] = useState("Pick a move to start!")
     const [click, setClick] = useState(false)
     const [fightLabel, setFightLabel] = useState("Start Fight");
   

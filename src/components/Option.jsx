@@ -5,7 +5,8 @@ export default function Option({value, setOption}) {
     console.log("value is set to ",value);
   }
 
+  const imageID = value.toLowerCase();
   return (
-    <button className='option' onClick={handleClick}>{value}</button>
+    <button className={`option ${value}`} onClick={handleClick}>{value}</button>
   )
 }

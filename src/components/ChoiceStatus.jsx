@@ -1,7 +1,7 @@
 export default function ChoiceStatus({click, choice}) {
     if(click){
-      return <p>You pick {choice.user}</p>;      
+      return <p className="choice">You pick <span className="yellow">{choice.user}</span></p>;      
     }
     
-    return <p>You pick none</p>;
+    return <p className="choice">You pick none</p>;
   }

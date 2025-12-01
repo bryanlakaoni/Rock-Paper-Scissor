@@ -10,9 +10,11 @@ export default function App() {
 
   return (
     <>
+      <div className='header'>
+        <h1>Rock Paper Scissor!</h1>
+        <p>Choose one of the moves to defeat your enemy. The first one to reach 10 scores wins.</p>
+      </div>
       <Scoreboard score={score}/>
-      <h1>Rock Paper Scissor</h1>
-      <p>Choose one of the moves to defeat your enemy. The first one to reach 10 scores wins.</p>
       <p className='status'>{status}</p>
       <Options options={options} setOption={setOption}/>
       <ChoiceStatus click={click} choice={choice}/>
@@ -20,6 +22,3 @@ export default function App() {
     </>
   )
 }
-
-
-// need to rapihin code and function biar lebih code quality, structured, maintainable, dan jelas solving problem approachnya.

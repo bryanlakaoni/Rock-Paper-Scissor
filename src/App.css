@@ -1,80 +1,195 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
 }
 
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-} */
-
-.option {
-  padding: 2rem;
-  margin: 2rem;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-.option:hover {
-  border-color: #646cff;
-}
-.option:focus,
-.option:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .scoreboard {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .score {
-  padding: 1rem;
-  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 15px;
+  min-width: 150px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding: 0px;
+  margin: 0px;
   width: fit-content;
+  justify-self: center;
+}
+
+.header h1 {
+  padding: 0px;
+  margin: 0px;
+  font-size: 3rem;
+  font-style: italic;
+}
+
+.header p {
+  padding: 0px;
+  margin: 0px;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .status {
   width: fit-content;
   justify-self: center;
-  color: aqua;
+}
+
+.status, .choice {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+
+.options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px 10px;
+  gap: 5rem;
+  margin: 0 auto;
+}
+
+.option {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-size: 0;
+}
+
+.option:hover {
+  transform: scale(0.95);
+}
+
+.option.Rock {
+  background-image: url('/assets/rock.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.option.Paper {
+  background-image: url('/assets/paper.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.option.Scissor {
+  background-image: url('/assets/scissor.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.fight-button {
+  background-color: bisque;
+  font-weight: 600;
+  font-size: medium;
+  color: black;
+  border: 0px solid;
+  border-radius: 5px;
+  padding: 15px 25px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.fight-button:hover {
+  transform: scale(0.97);
+}
+
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  .header p {
+    font-size: 1rem;
+  }
+
+  .options {
+    gap: 2rem;
+  }
+
+  .option {
+    width: 120px;
+    height: 120px;
+  }
+
+  .scoreboard {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .header p {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+
+  .scoreboard {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  .score {
+    min-width: unset;
+    font-size: large;
+    padding: 3px;
+    margin: 5px;
+  }
+
+  .options {
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1.5rem 0.5rem;
+    padding: 10px 0 20px 0;
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 40px;
+  }
+  
+  .option {
+    width: 48%; 
+    height: 90px;
+  }
+  
+  .status, .choice {
+    font-size: 1rem;
+  }
+  
+  .fight-button {
+    padding: 10px 20px;
+    font-size: small;
+  }
 }
