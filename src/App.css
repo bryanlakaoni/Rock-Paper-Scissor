@@ -182,6 +182,7 @@
   .option {
     width: 48%; 
     height: 90px;
+    -webkit-tap-highlight-color: transparent;
   }
   
   .status, .choice {
