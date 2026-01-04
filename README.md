@@ -1,16 +1,40 @@
-# React + Vite
+# ✂️ Rock Paper Scissors
+> *A modern, interactive web-based implementation of the classic hand game. Built with vanilla JavaScript.*
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
+    <img src="https://github.com/user-attachments/assets/c2673826-b08c-4005-bcb8-b722d34743b6" width="600" />
+    <br />
+    <sub><b>Game Interface</b></sub>
+</div>
 
-Currently, two official plugins are available:
+## 🧐 What is this?
+* A digital version of the classic decision-making game
+* This app provides immediate visual feedback on game results (Win/Lose/Draw)
+* This app tracks the player's score against the computer in real-time
+* Demonstrates core logic handling and DOM manipulation without external frameworks
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Try It Out
+You don't need to install anything. Play the game directly in your browser here:
 
-## React Compiler
+### [👉 bryans-rps.vercel.app](https://bryans-rps.vercel.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+* **Framework:** React.js
+* **Language:** JavaScript (ES6+)
+* **Styling:** CSS3 (Flexbox/Grid)
+* **Logic:** React Hooks (`useState`) & Core JavaScript
+* **Deployment:** Vercel
 
-## Expanding the ESLint configuration
+## ✨ Key Features
+* ✅ **Interactive UI:** Dynamic updates without page reloads.
+* ✅ **Score Tracking:** Keeps persistent count of Player vs. Computer wins.
+* ✅ **Game Logic:** Fair randomization using `Math.random()`.
+* ✅ **Responsive:** Playable on desktop and mobile browsers.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 💻 For Developers (Run Locally)
+If you want to view the source code or run it on your own machine:
+
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/bryanlakaoni/rock-paper-scissors.git](https://github.com/bryanlakaoni/rock-paper-scissors.git)
+2. **Run Simply open index.html in your browser.**
