@@ -36,5 +36,10 @@ If you want to view the source code or run it on your own machine:
 
 1. **Clone the repository**
    ```bash
-   git clone [https://github.com/bryanlakaoni/rock-paper-scissors.git](https://github.com/bryanlakaoni/rock-paper-scissors.git)
-2. **Run Simply open (`index.html`) in your browser.**
+   git clone [https://github.com/bryanlakaoni/Rock-Paper-Scissor.git](https://github.com/bryanlakaoni/Rock-Paper-Scissor.git)
+2. **Install Dependencies**
+   ```bash
+   npm install
+3. **Run the App**
+   ```bash
+   npm start
